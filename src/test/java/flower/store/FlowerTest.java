@@ -14,7 +14,7 @@ public class FlowerTest {
 
     @BeforeEach
     public void init() {
-        flower = new Flower();
+        flower = new Flower(15, FlowerColor.BLUE, 20, FlowerType.TULIP);
     }
 
     @Test
