@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 
-public class FlowerStoreTest {
+public final class FlowerStoreTest {
+
     private Store store;
     private final FlowerBucket roseBucket = new FlowerBucket();
     private final FlowerBucket tulipBucket = new FlowerBucket();
@@ -37,7 +38,6 @@ public class FlowerStoreTest {
     @Test
     public void testSearch() {
         Flower searchSample = new Flower(15, FlowerColor.RED, 10, FlowerType.ROSE);
-
         ArrayList<FlowerBucket> found = store.search(searchSample);
         Assertions.assertEquals(roseBucket, found.get(0));
         Assertions.assertEquals(1, found.size());
@@ -46,8 +46,7 @@ public class FlowerStoreTest {
     @Test
     public void testNotFound() {
         Flower searchSample = new Flower(10, FlowerColor.BLUE, 12, FlowerType.ROSE);
-
         ArrayList<FlowerBucket> found = store.search(searchSample);
-        Assertions.assertEquals(new ArrayList<>(), found);
+        Assertions.assertTrue(found.isEmpty());
     }
 }

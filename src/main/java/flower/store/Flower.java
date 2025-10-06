@@ -3,26 +3,25 @@ package flower.store;
 import lombok.Getter;
 import lombok.Setter;
 
-
-
 @Setter
-public class Flower {
+public final class Flower {
+
     @Getter
-    private double sepalLength;
+    private final double sepalLength;
     private FlowerColor color;
     @Getter
     private double price;
     @Getter
-    private FlowerType flowerType;
+    private final FlowerType flowerType;
 
-    public Flower(double sepalLength, FlowerColor color, double price, FlowerType flowerType) {
+    public Flower(final double sepalLength, final FlowerColor color, final double price, final FlowerType flowerType) {
         this.sepalLength = sepalLength;
         this.color = color;
         this.price = price;
         this.flowerType = flowerType;
     }
 
-    public Flower(Flower flower) {
+    public Flower(final Flower flower) {
         this.sepalLength = flower.getSepalLength();
         this.color = FlowerColor.fromHex(flower.getColor());
         this.price = flower.getPrice();
@@ -33,10 +32,10 @@ public class Flower {
         return color.toString();
     }
 
-    public static boolean compareFlowers(Flower f1, Flower f2) {
-        return f1.getFlowerType() == f2.getFlowerType() &&
-               f1.getColor().equals(f2.getColor()) &&
-               f1.getSepalLength() == f2.getSepalLength() &&
-               f1.getPrice() == f2.getPrice();
+    public static boolean compareFlowers(final Flower f1, final Flower f2) {
+        return f1.getFlowerType() == f2.getFlowerType()
+                && f1.getColor().equals(f2.getColor())
+                && f1.getSepalLength() == f2.getSepalLength()
+                && f1.getPrice() == f2.getPrice();
     }
 }

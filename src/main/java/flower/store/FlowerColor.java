@@ -1,19 +1,21 @@
 package flower.store;
 
 public enum FlowerColor {
-    RED("#FF0000"), BLUE("#0000FF");
-    private final String hex_color;
+    RED("#FF0000"),
+    BLUE("#0000FF");
 
-    FlowerColor(String hex_color) {
-        this.hex_color = hex_color;
+    private final String hexColor;
+
+    FlowerColor(final String hexColor) {
+        this.hexColor = hexColor;
     }
 
     @Override
     public String toString() {
-        return hex_color;
+        return hexColor;
     }
 
-    public static FlowerColor fromHex(String hex) {
+    public static FlowerColor fromHex(final String hex) {
         FlowerColor output;
         switch (hex.trim()) {
             case "#FF0000" -> output = RED;
