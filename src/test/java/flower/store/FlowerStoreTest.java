@@ -14,20 +14,9 @@ public class FlowerStoreTest {
 
     @BeforeEach
     public void init() {
-        Rose rose = new Rose();
-        rose.setColor(FlowerColor.RED);
-        rose.setPrice(10);
-        rose.setSepalLength(15);
-
-        Tulip tulip = new Tulip();
-        tulip.setColor(FlowerColor.BLUE);
-        tulip.setPrice(8);
-        tulip.setSepalLength(12);
-
-        Chamomile chamomile = new Chamomile();
-        chamomile.setColor(FlowerColor.RED);
-        chamomile.setPrice(6);
-        chamomile.setSepalLength(10);
+        Flower rose = new Flower(15, FlowerColor.RED, 10, FlowerType.ROSE);
+        Flower tulip = new Flower(12, FlowerColor.BLUE, 8, FlowerType.TULIP);
+        Flower chamomile = new Flower(10, FlowerColor.RED, 6, FlowerType.CHAMOMILE);
 
         FlowerPack rosePack = new FlowerPack(rose, 5);
         FlowerPack tulipPack = new FlowerPack(tulip, 7);
@@ -47,14 +36,7 @@ public class FlowerStoreTest {
 
     @Test
     public void testSearch() {
-        Flower searchSample = new Rose();
-        searchSample.setColor(FlowerColor.RED);
-        searchSample.setPrice(10);
-        searchSample.setSepalLength(15);
-
-        FlowerPack rosePack = new FlowerPack(searchSample, 5);
-        FlowerBucket flowerBucket = new FlowerBucket();
-        flowerBucket.addPack(rosePack);
+        Flower searchSample = new Flower(15, FlowerColor.RED, 10, FlowerType.ROSE);
 
         ArrayList<FlowerBucket> found = store.search(searchSample);
         Assertions.assertEquals(roseBucket, found.get(0));
@@ -63,10 +45,7 @@ public class FlowerStoreTest {
 
     @Test
     public void testNotFound() {
-        Flower searchSample = new Rose();
-        searchSample.setColor(FlowerColor.BLUE);
-        searchSample.setPrice(12);
-        searchSample.setSepalLength(10);
+        Flower searchSample = new Flower(10, FlowerColor.BLUE, 12, FlowerType.ROSE);
 
         ArrayList<FlowerBucket> found = store.search(searchSample);
         Assertions.assertEquals(new ArrayList<>(), found);
